@@ -2,9 +2,9 @@ class Drink
     attr_accessor :name, :drink_id, :category, :alcoholic, :glass, :instructions, :ingredients, :ingredient, :measures, :alcohol
     @@all = []
 
-    def initialize(name: nil, alcohol: nil, drink_id: nil)
+    def initialize(name: nil, ingredient: nil, drink_id: nil)
         @name = name
-        @alcohol = alcohol
+        @ingredient = ingredient
         @drink_id = drink_id
         @ingredients = []
         @measures = []
@@ -15,8 +15,8 @@ class Drink
         @@all
     end
 
-    def self.find_by_alcohol(alcohol)
-        self.all.select{|d| d.alcohol == alcohol}
+    def self.find_by_ingredient(ingredient)
+        self.all.select{|d| d.ingredient == ingredient}
     end
 
 end

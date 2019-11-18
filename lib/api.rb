@@ -1,12 +1,12 @@
 class Api
  
-    def self.get_drinks(alcohol)
-        url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=#{alcohol}"
+    def self.get_drinks(ingredient)
+        url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=#{ingredient}"
         uri = URI(url)
         response = Net::HTTP.get(uri)
 
         drinks = JSON.parse(response)["drinks"].each do |c|
-            Drink.new(name: c["strDrink"], drink_id: c["idDrink"], alcohol: alcohol) if c["strDrink"] != nil    
+            Drink.new(name: c["strDrink"], drink_id: c["idDrink"], ingredient: ingredient) if c["strDrink"] != nil    
         end
     end
 
